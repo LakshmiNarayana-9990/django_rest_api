@@ -1,0 +1,33 @@
+1. create a folder named ' API '
+2. open cmd for this current path : ' ..\API> '
+3. type ' pip install virtualenv ' in cmd
+4. API> virtualenv -p python3 venv
+5. API> venv\Scripts\activate
+6. API> pip install django
+7. API> pip install django djangorestframework coreapi coreapi-cli Markdown Pyaml
+8. API> django-admin startproject mainproject
+9. API> cd mainproject
+10. API> python manage.py runserver , then ctrl+c to exit
+11. API> django-admin startapp api
+12. API> add ' api.apps.ApiConfig ' to INSTALLED_APPS = [....'api.apps.ApiConfig',.... ] in mainproject/settings.py
+13. API> python manage.py migrate
+14. API> python manage.py createsuperuser
+15. API> set username,email,password 
+16. API> python manage.py runserver
+17. API> paste -> ' localhost:8000/admin ' in browser
+18. API> enter username and password for verification
+19. API> to create database, edit in ' api/models.py ' check models.py file
+20. API> python manage.py makemigrations
+21. API> python manage.py migrate
+22. API> edit myapi/admin.py ,checkout admin.py file
+23. API> python manage.py runserver
+24. API> goto localhost:8000/admin and add some values in database
+25. API> edit serializers.py file
+26. API> edit api/views.py file
+27. API> edit mainproject/urls.py and api/views.py files
+28. API> python manage.py runserver
+29. API> pip install djangorestframework-csv
+30. add REST_FRAMEWORK = {'DEFAULT_RENDERER_CLASSES': ('rest_framework.renderers.JSONRenderer','rest_framework.renderers.BrowsableAPIRenderer','rest_framework_csv.renderers.CSVRenderer',),} to settings.py
+31. API> add ' rom django.http import JsonResponse; def send_json(request): return JsonResponse(projectSerializer.data, safe=False) ' to views.py
+32. API> add ' from api.views import send_json; .... path('sendjson/', send_json, name='send_json'), ' to mainproject/urls.py
+33. API> python manage.py runserver
